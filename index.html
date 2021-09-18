@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<link rel="shortcut icon" href="#">
+<style>
+    body { 
+        background-color: rgb(150, 150, 150);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #config {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        background-color: #001d62bd;
+        color: white;
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        text-align: center;
+        border-radius: 25px;
+    }
+    #glcanvas {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: white;
+    }
+</style>
+<body>
+    <script src="utils.js" type="text/javascript"></script>
+    <script src="chicago.js" type="text/javascript"></script>
+    <script src="manhattan.js" type="text/javascript"></script>
+    <script src="gl.js" type="module"></script>
+    <canvas id="glcanvas"></canvas>
+    <div id="config">
+        <table>
+            <tr>
+                <td>Skyline</td>
+                <td><select id="skyline"  oninput="window.updateSkyline()">
+                    <option value="chicago">Chicago</option>
+                    <option value="manhattan">Manhattan</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Rotate camera</td>
+                <td><input id="rotate" type="range" min="0" max="360" step="0.05" value="0" oninput="window.updateRotate()"></td>
+            </tr>
+            <tr>
+                <td>Zoom</td>
+                <td><input id="zoom" type="range" min="0" max="100" value="0" oninput="window.updateZoom()"></td>
+            </tr>
+            <tr>
+                <td>Rotate light</td>
+                <td><input id="lightRotate" type="range" min="0" max="360" value="0" oninput="window.updateLightRotate()"></td>
+            </tr>
+            <tr>
+                <td>Projection</td>
+                <td><select id="projection"  oninput="window.updateProjection()">
+                    <option value="perspective">Perspective</option>
+                    <option value="orthographic">Orthographic</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Display shadow map</label></td>
+                <td><input type="checkbox" id="shadowmap" onchange="window.displayShadowmap(this)"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
